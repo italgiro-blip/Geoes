@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAPA INTERACTIVO DE LAS PROVINCIAS DE ESPAÑA | Pro</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- CSS Propio -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- CABECERA FLOTANTE -->
+    <header class="map-overlay-header">
+        <div class="header-content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/960px-Flag_of_Spain.svg.png" alt="Bandera de España" class="map-logo">
+            <div class="header-text">
+                <h1 id="mainTitle">CLASIFICACIÓN DE DATOS · ESPAÑA</h1>
+                <span class="version-badge">v2.0 PRO</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- PANEL DE CONTROL IZQUIERDO -->
+    <aside class="controls">
+        <div class="panel-header">
+            <h3>PARÁMETROS VISUALES</h3>
+            <div class="status-dot"></div>
+        </div>
+        
+        <button type="button" id="btnCargarGeoJSON" class="map-button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            IMPORTAR CAPA
+        </button>
+        
+        <div class="separator"></div>
+
+        <div class="control-group">
+            <label>MAPA BASE
+                <select id="baseMapSelect">
+                    <option value="satellite">Satélite (Esri)</option>
+                    <option value="streets">OpenStreetMap</option>
+                    <option value="dark">Carto Voyager</option>
+                </select>
+            </label>
+
+            <label>MÉTODO ESTADÍSTICO
+                <select id="classificationSelect">
+                    <option value="jenks">Optimizar grupos (Jenks)</option>
+                    <option value="equal">Intervalos iguales (Uniforme)</option>
+                    <option value="quartiles">Distribución de frecuencia (Cuartiles)</option>
+                </select>
+            </label>
+
+            <label>ESQUEMA DE COLORES
+                <select id="paletteSelect">
+                    <option value="reds" selected>Tonos rojos</option>
+                    <option value="yellows">Tonos amarillos</option>
+                    <option value="blues">Tonos azules</option>
+                    <option value="greens">Tonos verdes</option>
+                    <option value="purples">Tonos lilas</option>
+                </select>
+            </label>
+
+            <label>UNIDAD ADMINISTRATIVA
+                <select id="labelSelect">
+                    <option value="">Cargando datos...</option>
+                </select>
+            </label>
+        </div>
+
+        <!-- TARJETA DE INFORMACIÓN -->
+        <div id="infoBox" class="info-card">
+            <div class="info-row">
+                <span class="info-label">Administración</span>
+                <span id="detailNAME_1" class="info-value">--</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Valor</span>
+                <span id="detailTax_rate" class="info-value highlight">--</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- IMÁGENES LATERALES -->
+    <div class="side-images">
+        <div class="image-card">
+            <img src="./images/img2.png" alt="Bandera de España">
+        </div>
+        <div class="image-card">
+            <img src="./images/img.png" alt="Mapa de España">
+        </div>
+    </div>
+
+    <!-- MAPA -->
+    <div id="map"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
